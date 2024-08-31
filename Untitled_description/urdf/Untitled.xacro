@@ -1,0 +1,115 @@
+<?xml version="1.0" ?>
+<robot name="Untitled" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find Untitled_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find Untitled_description)/urdf/Untitled.trans" />
+<xacro:include filename="$(find Untitled_description)/urdf/Untitled.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="-1.3464311429255473e-15 1.9718871595330731 9.663528660082786e-17" rpy="0 0 0"/>
+    <mass value="3026.175"/>
+    <inertia ixx="9251.482693" iyy="26155.356125" izz="23237.906193" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find Untitled_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find Untitled_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Component1_1">
+  <inertial>
+    <origin xyz="2.550000000000014 0.21332116788320965 -2.217600411101023" rpy="0 0 0"/>
+    <mass value="806.5875000000103"/>
+    <inertia ixx="4.484689" iyy="2233.811945" izz="2235.625181" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="2.55 -3.05 -1.65" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find Untitled_description)/meshes/Component1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="2.55 -3.05 -1.65" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find Untitled_description)/meshes/Component1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Component2_1">
+  <inertial>
+    <origin xyz="-4.438883531196298 -2.92257281553398 0.6865326277339285" rpy="0 0 0"/>
+    <mass value="101.06874999999998"/>
+    <inertia ixx="2.06101" iyy="2.422215" izz="0.779907" ixy="0.0" iyz="0.004644" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-2.7 -6.25 1.235201" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find Untitled_description)/meshes/Component2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-2.7 -6.25 1.235201" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find Untitled_description)/meshes/Component2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Component3_1">
+  <inertial>
+    <origin xyz="1.6138834688037025 -2.946413530096626 0.36760058889897673" rpy="0 0 0"/>
+    <mass value="420.8576039906773"/>
+    <inertia ixx="329.95812" iyy="1.676213" izz="329.663745" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="3.352767 -6.725 1.135201" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find Untitled_description)/meshes/Component3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="3.352767 -6.725 1.135201" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find Untitled_description)/meshes/Component3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Slider 1" type="prismatic">
+  <origin xyz="-2.55 3.05 1.65" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="Component1_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+  <limit upper="0.0" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Slider 2" type="prismatic">
+  <origin xyz="5.25 3.2 -2.885201" rpy="0 0 0"/>
+  <parent link="Component1_1"/>
+  <child link="Component2_1"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+  <limit upper="0.0" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Slider 3" type="prismatic">
+  <origin xyz="-6.052767 0.475 0.1" rpy="0 0 0"/>
+  <parent link="Component2_1"/>
+  <child link="Component3_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+  <limit upper="0.0" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+</robot>
